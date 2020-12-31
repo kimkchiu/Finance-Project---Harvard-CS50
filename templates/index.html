@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <!--<div class="alert alert-info" role="alert">-->
+    <!--      {{ trans }}!-->
+    <!--</div>-->
+
+    <table class = "table">
+        <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {%for row in rows%}
+
+        <tr>
+            <th scope="row">{{ row['symbol'] }}</th>
+            <td>{{ row['name'] }}</td>
+            <td>{{ row['shares'] }}</td>
+            <td>${{ "{:,.2f}".format(row['price']) }}</td>
+            <td>${{ "{:,.2f}".format(row['total']) }}</td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+            <th scope="row">CASH</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ cash }}</td>
+        </tr>
+
+        <tr class = "finalTotal">
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ finalTotal }}</td>
+        </tr>
+
+        </tbody>
+
+
+
+    </table>
+{% endblock %}

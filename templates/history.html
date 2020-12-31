@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+
+
+    <table class = "table">
+
+        <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Price</th>
+            <th scope="col">Transaction</th>
+            <th scope="col">Time</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {%for row in rows%}
+
+        <tr>
+            <th scope="row">{{ row['symbol'] }}</th>
+            <td>${{ "{:,.2f}".format(row['price']) }}</td>
+            <td>{{ row['trans'] }}</td>
+            <td>{{ row['time'] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+{% endblock %}
